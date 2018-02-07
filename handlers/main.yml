@@ -1,0 +1,32 @@
+---
+# handlers file for aspects_rsyslog
+- name: restart rsyslog
+  service:
+    name: rsyslog
+    state: restarted
+    enabled: yes
+  tags:
+  - aspects_rsyslog
+
+- name: reload rsyslog
+  service:
+    name: rsyslog
+    state: reloaded
+    enabled: yes
+  tags:
+  - aspects_rsyslog
+
+- name: start rsyslog
+  service:
+    name: rsyslog
+    state: started
+    enabled: yes
+  tags:
+  - aspects_rsyslog
+
+- name: stop rsyslog
+  service:
+    name: rsyslog
+    state: stopped
+  tags:
+  - aspects_rsyslog

@@ -1,0 +1,7 @@
+---
+# tasks file for aspects_rsyslog
+- name: Include the roles tasks
+  when: aspects_rsyslog_enabled
+  include_tasks: init.yml
+  tags:
+  - aspects_rsyslog
