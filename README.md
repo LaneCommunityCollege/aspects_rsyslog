@@ -45,6 +45,7 @@ aspects_rsyslog_packages:
       9: "rsyslog"
     CentOS:
       7: "rsyslog"
+```
 
 ### aspects_rsyslog_custom_config_file_path
 The absolute path to the custom configuration file this role stores configuration blocks in. This file is included at the end of `/etc/rsyslog.conf` so that it can override any defaults that the various distributions set.
