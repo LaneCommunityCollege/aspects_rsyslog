@@ -94,67 +94,67 @@ The `0000000000000default` block is provided because some settings cannot simply
 
 
 # Example Playbook
-
-    - hosts: servers
-      vars:
-        aspects_rsyslog_enabled: True
-        aspects_rsyslog_config_centos7:
-          00001kern: |
-            #This is a comment
-            # Kernel messages are stored in the kernel file,
-            # critical messages and higher ones also go
-            # to another host and to the console
-            kern.* /var/adm/kernel kern.crit @finlandia kern.crit /dev/console kern.info;kern.!err /var/adm/kernel-info
-          00002mailinfo: |
-            # Log all mail.info and news.info messages to info
-            mail,news.=info /var/adm/info
-        aspects_rsyslog_config_trusty:
-          00001kern: |
-            #This is a comment
-            # Kernel messages are stored in the kernel file,
-            # critical messages and higher ones also go
-            # to another host and to the console
-            kern.* /var/adm/kernel kern.crit @finlandia kern.crit /dev/console kern.info;kern.!err /var/adm/kernel-info
-          00002mailinfo: |
-            # Log all mail.info and news.info messages to info
-            mail,news.=info /var/adm/info
-          00003fileowner: |
-            #
-            # Set the default permissions for all log files.
-            #
-            $FileOwner syslog
-            $FileGroup adm
-            $FileCreateMode 0640
-            $DirCreateMode 0755
-            $Umask 0022
-            $PrivDropToUser syslog
-            $PrivDropToGroup syslog
-        aspects_rsyslog_config_xenial:
-          00001kern: |
-            #This is a comment
-            # Kernel messages are stored in the kernel file,
-            # critical messages and higher ones also go
-            # to another host and to the console
-            kern.* /var/adm/kernel kern.crit @finlandia kern.crit /dev/console kern.info;kern.!err /var/adm/kernel-info
-          00002mailinfo: |
-            # Log all mail.info and news.info messages to info
-            mail,news.=info /var/adm/info
-        aspects_rsyslog_config_stretch:
-          00001kern: |
-            #This is a comment
-            # Kernel messages are stored in the kernel file,
-            # critical messages and higher ones also go
-            # to another host and to the console
-            kern.* /var/adm/kernel kern.crit @finlandia kern.crit /dev/console kern.info;kern.!err /var/adm/kernel-info
-          00002mailinfo: |
-            # Log all mail.info and news.info messages to info
-            mail,news.=info /var/adm/info
-        aspects_rsyslog_config_general:
-          00001comment: |
-            # This comment will apply to all hosts.
-      roles:
-         - aspects_rsyslog
-
+```yaml
+- hosts: servers
+  vars:
+    aspects_rsyslog_enabled: True
+    aspects_rsyslog_config_centos7:
+      00001kern: |
+        #This is a comment
+        # Kernel messages are stored in the kernel file,
+        # critical messages and higher ones also go
+        # to another host and to the console
+        kern.* /var/adm/kernel kern.crit @finlandia kern.crit /dev/console kern.info;kern.!err /var/adm/kernel-info
+      00002mailinfo: |
+        # Log all mail.info and news.info messages to info
+        mail,news.=info /var/adm/info
+    aspects_rsyslog_config_trusty:
+      00001kern: |
+        #This is a comment
+        # Kernel messages are stored in the kernel file,
+        # critical messages and higher ones also go
+        # to another host and to the console
+        kern.* /var/adm/kernel kern.crit @finlandia kern.crit /dev/console kern.info;kern.!err /var/adm/kernel-info
+      00002mailinfo: |
+        # Log all mail.info and news.info messages to info
+        mail,news.=info /var/adm/info
+      00003fileowner: |
+        #
+        # Set the default permissions for all log files.
+        #
+        $FileOwner syslog
+        $FileGroup adm
+        $FileCreateMode 0640
+        $DirCreateMode 0755
+        $Umask 0022
+        $PrivDropToUser syslog
+        $PrivDropToGroup syslog
+    aspects_rsyslog_config_xenial:
+      00001kern: |
+        #This is a comment
+        # Kernel messages are stored in the kernel file,
+        # critical messages and higher ones also go
+        # to another host and to the console
+        kern.* /var/adm/kernel kern.crit @finlandia kern.crit /dev/console kern.info;kern.!err /var/adm/kernel-info
+      00002mailinfo: |
+        # Log all mail.info and news.info messages to info
+        mail,news.=info /var/adm/info
+    aspects_rsyslog_config_stretch:
+      00001kern: |
+        #This is a comment
+        # Kernel messages are stored in the kernel file,
+        # critical messages and higher ones also go
+        # to another host and to the console
+        kern.* /var/adm/kernel kern.crit @finlandia kern.crit /dev/console kern.info;kern.!err /var/adm/kernel-info
+      00002mailinfo: |
+        # Log all mail.info and news.info messages to info
+        mail,news.=info /var/adm/info
+    aspects_rsyslog_config_general:
+      00001comment: |
+        # This comment will apply to all hosts.
+  roles:
+     - aspects_rsyslog
+```
 # License
 
 MIT
