@@ -29,7 +29,7 @@ aspects_rsyslog_packages:
 ```
 Set ```state``` to "default" if you wish to list a package but not install it.
 
-Check the [tasks/aptInstallpackages.yml](aptInstallpackages.yml) or [tasks/yumInstallPackages.yml](yumInstallPackages.yml) files to find out what values are accepted for the ```ansible_distribution_*``` variables.
+Check the [tasks/aptInstallpackages.yml](tasks/aptInstallpackages.yml) or [tasks/yumInstallPackages.yml](tasks/yumInstallPackages.yml) files to find out what values are accepted for the ```ansible_distribution_*``` variables.
 
 
 For example:
