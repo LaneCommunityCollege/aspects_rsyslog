@@ -15,38 +15,6 @@ Default is `False`.
 
 Set to `True` to run the tasks.
 
-### aspects_rsyslog_packages
-A dictionary/hash of packages to install.
-
-Use this pattern:
-
-```yaml
-aspects_rsyslog_packages:
-  <package key>:
-    state: "<present or latest>"
-    <ansible_distribution>:
-      <ansible_distribution_version or ansible_distribution_major_version>: "<package name>"
-```
-Set ```state``` to "default" if you wish to list a package but not install it.
-
-Check the [tasks/aptInstallpackages.yml](tasks/aptInstallpackages.yml) or [tasks/yumInstallPackages.yml](tasks/yumInstallPackages.yml) files to find out what values are accepted for the ```ansible_distribution_*``` variables.
-
-
-For example:
-
-```yaml
-aspects_rsyslog_packages:
-  rsyslog:
-    state: "present"
-    Ubuntu:
-      1604: "rsyslog"
-      1404: "rsyslog"
-    Debian:
-      9: "rsyslog"
-    CentOS:
-      7: "rsyslog"
-```
-
 ### aspects_rsyslog_custom_config_file_path
 The absolute path to the custom configuration file this role stores configuration blocks in. This file is included at the end of `/etc/rsyslog.conf` so that it can override any defaults that the various distributions set.
 
@@ -80,6 +48,27 @@ Default value is in `0000000000000default`. The complete rsyslog.conf copied fro
 
 The value is passed through the Jinja `sort` filter. So you can control the order your rule blocks are written. Be sure to test before deploying to production!
 
+### aspects_rsyslog_config_oraclelinux7
+A dictionary/hash of rsyslog configuration blocks specific to the Oracle Linux 7 distribution.
+
+Default value is in `0000000000000default`. The complete rsyslog.conf copied from the `http://yum.oracle.com/boxes/oraclelinux/ol74/ol74.box` Vagrant box in August 2018.
+
+The value is passed through the Jinja `sort` filter. So you can control the order your rule blocks are written. Be sure to test before deploying to production!
+
+### aspects_rsyslog_config_oraclelinux6
+A dictionary/hash of rsyslog configuration blocks specific to the Oracle Linux 6 distribution.
+
+Default value is in `0000000000000default`. The complete rsyslog.conf copied from the `http://yum.oracle.com/boxes/oraclelinux/ol69/ol69.box` Vagrant box in August 2018.
+
+The value is passed through the Jinja `sort` filter. So you can control the order your rule blocks are written. Be sure to test before deploying to production!
+
+### aspects_rsyslog_config_bionic
+A dictionary/hash of rsyslog configuration blocks specific to the Ubuntu 18.04 bionic distribution.
+
+Default value is in `0000000000000default`. The complete rsyslog.conf copied from the `ubuntu/bionic64` Vagrant box in August 2018.
+
+The value is passed through the Jinja `sort` filter. So you can control the order your rule blocks are written. Be sure to test before deploying to production!
+
 ### aspects_rsyslog_config_general
 A dictionary/hash of rsyslog configuration blocks that will be applied to all hosts, regardless of distribution.
 
@@ -92,6 +81,11 @@ To change configuration, just add a block to the appropriate `aspects_rsyslog_co
 
 The `0000000000000default` block is provided because some settings cannot simply be added to the end of the `rsyslog.conf` file. For example, you cannot load the `imtcp` module after the modules section. (At least, that is what happened when I was testing.) So you will need to override the `0000000000000default` block in order to load modules.
 
+# Dependencies
+## aspects_packages
+[aspects_packages](https://github.com/LaneCommunityCollege/aspects_packages) is used to ensure the rsyslog package is installed.
+
+If you don't want to use `aspects_packages`, just set `aspects_packages_enabled: False`.
 
 # Example Playbook
 ```yaml

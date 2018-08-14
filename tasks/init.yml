@@ -1,10 +1,4 @@
 ---
-- name: "install rsyslog packages"
-  include: "{{ ansible_pkg_mgr}}InstallPackages.yml"
-  tags:
-    - aspects_rsyslog
-    - aspects_rsyslog_package_install
-
 - name: "Template custom configuration file."
   template:
     src: "rsyslog.conf.j2"
