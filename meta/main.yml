@@ -25,4 +25,4 @@ galaxy_info:
     - logging
 
 dependencies:
-- { role: aspects_packages, when: aspects_packages_enabled }
+- { role: aspects_packages, when: aspects_packages_enabled and aspects_rsyslog_enabled }
