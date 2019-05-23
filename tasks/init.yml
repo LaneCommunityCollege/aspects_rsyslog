@@ -15,7 +15,7 @@
 - name: "Template separate configuration files in rsyslog.d."
   when: item.value.enabled
   template:
-    src: "rsyslog.conf.j2"
+    src: "separate-file.conf.j2"
     dest: "/etc/rsyslog.d/{{ item.value.weight }}-{{ item.value.name }}.conf"
     owner: "root"
     group: "root"
