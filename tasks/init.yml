@@ -20,7 +20,7 @@
     owner: "root"
     group: "root"
     mode: "0644"
-  with_dict: "{{ aspects_rsyslog_separate_files_config|default({}) }}"
+  loop: "{{ aspects_rsyslog_separate_files_config|default({})|dict2items }}"
   notify: "restart rsyslog"
   tags:
     - aspects_rsyslog

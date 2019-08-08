@@ -6,12 +6,6 @@
 {% endfor %}
 {% endif %}
 
-{% if ansible_distribution == "Ubuntu" and ansible_distribution_release == "trusty" %}
-{% for block in aspects_rsyslog_config_trusty|sort %}
-{{ aspects_rsyslog_config_trusty[block] }}
-{% endfor %}
-{% endif %}
-
 {% if ansible_distribution == "Ubuntu" and ansible_distribution_release == "xenial" %}
 {% for block in aspects_rsyslog_config_xenial|sort %}
 {{ aspects_rsyslog_config_xenial[block] }}
@@ -27,12 +21,6 @@
 {% if ansible_distribution == "OracleLinux" and ansible_distribution_major_version == "7" %}
 {% for block in aspects_rsyslog_config_oraclelinux7|sort %}
 {{ aspects_rsyslog_config_oraclelinux7[block] }}
-{% endfor %}
-{% endif %}
-
-{% if ansible_distribution == "OracleLinux" and ansible_distribution_major_version == "6" %}
-{% for block in aspects_rsyslog_config_oraclelinux6|sort %}
-{{ aspects_rsyslog_config_oraclelinux6[block] }}
 {% endfor %}
 {% endif %}
 
