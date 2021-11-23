@@ -1,35 +1,35 @@
 # {{ ansible_managed }}
 
 {% if ansible_distribution == "CentOS" and ansible_distribution_major_version == "7" %}
-{% for centos_block in aspects_rsyslog_config_centos7 | sort %}
-{{ centos_block }}
+{% for block in aspects_rsyslog_config_centos7|sort %}
+{{ aspects_rsyslog_config_centos7[block] }}
 {% endfor %}
 {% endif %}
 
 {% if ansible_distribution == "Debian" and ansible_distribution_release == "buster" %}
-{% for buster_block in aspects_rsyslog_config_buster | sort %}
-{{ buster_block }}
+{% for block in aspects_rsyslog_config_buster|sort %}
+{{ aspects_rsyslog_config_buster[block] }}
 {% endfor %}
 {% endif %}
 
 {% if ansible_distribution == "OracleLinux" and ansible_distribution_major_version == "7" %}
-{% for oraclelinux7_block in aspects_rsyslog_config_oraclelinux7 | sort %}
-{{ oraclelinux7_block }}
+{% for block in aspects_rsyslog_config_oraclelinux7|sort %}
+{{ aspects_rsyslog_config_oraclelinux7[block] }}
 {% endfor %}
 {% endif %}
 
-{% if ansible_distribution_release == "bionic" %}
-{% for bionic_block in aspects_rsyslog_config_bionic | sort %}
-{{ bionic_block }}
+{% if ansible_distribution == "Ubuntu" and ansible_distribution_release == "bionic" %}
+{% for block in aspects_rsyslog_config_bionic|sort %}
+{{ aspects_rsyslog_config_bionic[block] }}
 {% endfor %}
 {% endif %}
 
 {% if ansible_distribution == "Ubuntu" and ansible_distribution_release == "focal" %}
-{% for focal_block in aspects_rsyslog_config_focal | sort %}
-{{ focal_block }}
+{% for block in aspects_rsyslog_config_focal|sort %}
+{{ aspects_rsyslog_config_focal[block] }}
 {% endfor %}
 {% endif %}
 
-{% for general_block in aspects_rsyslog_config_general | sort %}
-{{ general_block }}
+{% for block in aspects_rsyslog_config_general|sort %}
+{{ aspects_rsyslog_config_general[block] }}
 {% endfor %}
