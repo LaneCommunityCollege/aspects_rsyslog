@@ -27,20 +27,6 @@ Default value is in `0000000000000default`. The complete rsyslog.conf copied fro
 
 The value is passed through the Jinja `sort` filter. So you can control the order your rule blocks are written. Be sure to test before deploying to production!
 
-### aspects_rsyslog_config_xenial
-A dictionary/hash of rsyslog configuration blocks specific to the Ubuntu 16.04 Xenial distribution.
-
-Default value is in `0000000000000default`. The complete rsyslog.conf copied from the `bento/ubuntu-16.04` Vagrant box in February 2018.
-
-The value is passed through the Jinja `sort` filter. So you can control the order your rule blocks are written. Be sure to test before deploying to production!
-
-### aspects_rsyslog_config_stretch
-A dictionary/hash of rsyslog configuration blocks specific to the Debian 9 Stretch distribution.
-
-Default value is in `0000000000000default`. The complete rsyslog.conf copied from the `debian/stretch64` Vagrant box in February 2018.
-
-The value is passed through the Jinja `sort` filter. So you can control the order your rule blocks are written. Be sure to test before deploying to production!
-
 ### aspects_rsyslog_config_oraclelinux7
 A dictionary/hash of rsyslog configuration blocks specific to the Oracle Linux 7 distribution.
 
@@ -88,7 +74,7 @@ If you don't want to use `aspects_packages`, just set `aspects_packages_enabled:
       00002mailinfo: |
         # Log all mail.info and news.info messages to info
         mail,news.=info /var/adm/info
-    aspects_rsyslog_config_xenial:
+    aspects_rsyslog_config_focal:
       00001kern: |
         #This is a comment
         # Kernel messages are stored in the kernel file,
@@ -98,7 +84,7 @@ If you don't want to use `aspects_packages`, just set `aspects_packages_enabled:
       00002mailinfo: |
         # Log all mail.info and news.info messages to info
         mail,news.=info /var/adm/info
-    aspects_rsyslog_config_stretch:
+    aspects_rsyslog_config_buster:
       00001kern: |
         #This is a comment
         # Kernel messages are stored in the kernel file,
