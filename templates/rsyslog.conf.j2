@@ -30,6 +30,12 @@
 {% endfor %}
 {% endif %}
 
+{% if ansible_distribution == "Ubuntu" and ansible_distribution_release == "jammy" %}
+{% for block in aspects_rsyslog_config_jammy|sort %}
+{{ aspects_rsyslog_config_jammy[block] }}
+{% endfor %}
+{% endif %}
+
 {% for block in aspects_rsyslog_config_general|sort %}
 {{ aspects_rsyslog_config_general[block] }}
 {% endfor %}
