@@ -13,7 +13,7 @@
     - aspects_rsyslog_configuration
 
 - name: "Template separate configuration files in rsyslog.d."
-  when: item.value.enabled
+  when: item.value.enabled or item.value.enabled == "True"
   template:
     src: "separate-file.conf.j2"
     dest: "/etc/rsyslog.d/{{ item.value.weight }}-{{ item.value.name }}.conf"
