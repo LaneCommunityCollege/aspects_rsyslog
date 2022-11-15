@@ -12,9 +12,27 @@
 {% endfor %}
 {% endif %}
 
+{% if ansible_distribution == "Debian" and ansible_distribution_release == "bullseye" %}
+{% for block in aspects_rsyslog_config_bullseye|sort %}
+{{ aspects_rsyslog_config_bullseye[block] }}
+{% endfor %}
+{% endif %}
+
 {% if ansible_distribution == "OracleLinux" and ansible_distribution_major_version == "7" %}
 {% for block in aspects_rsyslog_config_oraclelinux7|sort %}
 {{ aspects_rsyslog_config_oraclelinux7[block] }}
+{% endfor %}
+{% endif %}
+
+{% if ansible_distribution == "OracleLinux" and ansible_distribution_major_version == "8" %}
+{% for block in aspects_rsyslog_config_oraclelinux8|sort %}
+{{ aspects_rsyslog_config_oraclelinux8[block] }}
+{% endfor %}
+{% endif %}
+
+{% if ansible_distribution == "OracleLinux" and ansible_distribution_major_version == "9" %}
+{% for block in aspects_rsyslog_config_oraclelinux9|sort %}
+{{ aspects_rsyslog_config_oraclelinux9[block] }}
 {% endfor %}
 {% endif %}
 

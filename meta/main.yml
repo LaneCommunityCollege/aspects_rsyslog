@@ -16,9 +16,12 @@ galaxy_info:
     - name: Debian
       versions:
         - 10
+        - 11
     - name: OracleLinux
       versions:
         - 7
+        - 8
+        - 9
   galaxy_tags:
     - system
     - logging
